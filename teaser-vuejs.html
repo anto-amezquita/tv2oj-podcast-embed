@@ -1,0 +1,76 @@
+<template>
+  <div class="container mx-auto p-8">
+    <!-- Podcast Card -->
+    <div
+      id="podcast-card"
+      :class="drawerOpened ? 'bg-green-500' : 'bg-blue-500'"
+      class="cursor-pointer p-4 rounded-md text-white"
+      @click="toggleDrawer"
+    >
+      <h2 class="text-2xl font-semibold">Podcast Title</h2>
+      <p>Description of the podcast</p>
+    </div>
+
+    <!-- Overlay -->
+    <div
+      class="drawer__overlay"
+      @click="toggleDrawer"
+      :class="drawerOpened ? 'show' : ''"
+    >
+    </div>
+
+    <!-- Podcast Drawer -->
+    <div
+      id="drawer"
+      class="fixed bottom-0 right-0 flex flex-col w-full md:w-1/2 lg:w-1/3 xl:w-1/4 slide-up-down z-20"
+      :class="drawerOpened ? 'show' : ''"
+    >
+      <!-- Drawer Top Header -->
+      <div
+        class="drawer__header inline-flex justify-between items-center"
+      >
+        <button
+          type="button"
+          class="drawer__header-toggle group"
+          @click="toggleDrawer"
+        >
+          <span class="h-12 p-4 bg-black hover:bg-green-600 text-white text-xl font-sundry text-center flex-grow">
+            Drawer Title
+          </span>
+          <span class="bg-white text-black h-12 w-12 inline-flex leading-none items-center justify-center rounded-tr-xl group-hover:bg-red">
+            +
+          </span>
+        </button>
+      </div>
+
+      <!-- Drawer Content -->
+      <div class="drawer__content bg-white text-black p-4 shadow-lg">
+        <!-- iframe content -->
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      drawerOpened: false,
+    };
+  },
+  methods: {
+    toggleDrawer() {
+      this.drawerOpened = !this.drawerOpened;
+      if (this.drawerOpened) {
+        // Do any additional logic for opening the drawer here
+      } else {
+        // Do any additional logic for closing the drawer here
+      }
+    },
+  },
+};
+</script>
+
+<style>
+/* Your existing styles here */
+</style>
