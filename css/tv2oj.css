@@ -1,0 +1,227 @@
+/*
+Table of contents:
+ - Typography
+ - Spacing
+ - Colors
+ - Base styles: defaults
+ - Navigation
+*/
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+@font-face {
+  font-family: "sundry-medium";
+  src: url("/assets/fonts/Sundry-Medium.woff2") format("woff2"),
+    url("/assets/fonts/Sundry-Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "sundry-regular";
+  src: url("/assets/fonts/Sundry-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Sundry-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --proxima-nova: "proxima-nova", sans-serif;
+  --sundry-regular: "sundry-regular", sans-serif;
+  --sundry-medium: "sundry-medium", sans-serif;
+
+  --tv2oj-font-body: var(--sundry-regular);
+  --tv2oj-font-heading: var(--sundry-medium);
+
+  --tv2oj-font-scale-ratio: 1.2; //Minor 3rd
+
+  --tv2oj-font-xs: 0.75rem; //12px
+  --tv2oj-font-sm: 0.875rem; //14px
+  --tv2oj-font-md: 1rem; //16px
+  --tv2oj-font-lg: 1.25rem; //20px;
+  --tv2oj-font-xl: calc(var(--tv2oj-font-md) * var(--tv2oj-font-scale-ratio));
+  --tv2oj-font-2xl: calc(var(--tv2oj-font-xl) * var(--tv2oj-font-scale-ratio));
+  --tv2oj-font-3xl: calc(var(--tv2oj-font-2xl) * var(--tv2oj-font-scale-ratio));
+  --tv2oj-font-4xl: calc(var(--tv2oj-font-3xl) * var(--tv2oj-font-scale-ratio));
+}
+
+@media only screen and (min-width: 1200px) {
+    :root {
+        --tv2oj-font-scale-ratio: 1.333; //Perfect 4th
+        --tv2oj-font-lg: calc(var(--tv2oj-font-md) * var(--tv2oj-font-scale-ratio));
+    }
+}
+
+
+/* ==========================================================================
+   Spacing: Positive & Negative
+   ========================================================================== */
+:root {
+  //Spacing
+  --tv2oj-space-xs: calc(var(--tv2oj-space-md) / 4);
+  --tv2oj-space-sm: calc(var(--tv2oj-space-md) / 2);
+  --tv2oj-space-md: 16px;
+  --tv2oj-space-lg: calc(var(--tv2oj-space-md) * 2);
+  --tv2oj-space-xl: calc(var(--tv2oj-space-md) * 4);
+}
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --tv2oj-space-md: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    :root {
+        --tv2oj-space-md: 1.25rem;
+    }
+}
+
+/* ==========================================================================
+   Colors
+   ========================================================================== */
+:root {
+  // Brand colors
+  --tv2oj-white: #ffffff;
+  --tv2oj-gray-100: #edede5;
+  --tv2oj-gray-200: #dbdacc;
+  --tv2oj-gray-300: #afaca5;
+  --tv2oj-gray-400: #8e8881;
+  --tv2oj-gray-500: #746f69;
+  --tv2oj-black-500: #242424;
+  --tv2oj-black-700: #141414;
+  --tv2oj-black-900: #000000;
+  --tv2oj-yellow-400: #e1ff7d;
+  --tv2oj-yellow-500: #ffed00; //breaking
+  --tv2oj-green-500: #00aa5a;
+  --tv2oj-green-600: #00914e; //not identity
+  --tv2oj-green-900: #235537;
+  --tv2oj-pink-500: #ffc8c8;
+  --tv2oj-red-500: #ff3200;
+
+  //Secondary colors
+  --tv2oj-pink-600: #fac8f0;
+  --tv2oj-red-900: #870023;
+  --tv2oj-orange-400: #ffbe82;
+  --tv2oj-green-400: #14f064;
+  --tv2oj-blue-300: #b9d7ff;
+  --tv2oj-blue-500: #372dc3;
+  --tv2oj-blue-700: #001950;
+  --tv2oj-purple-300: #c3a5ff;
+  --tv2oj-purple-500: #4b0569;
+
+  // UI colors
+  --tv2oj-backdrop-color: rgba(0, 0, 0, 0.33);
+  --tv2oj-border-color: var(--tv2oj-gray-200);
+  --tv2oj-border-color-dark: rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   Base styles: defaults
+   ========================================================================== */
+:root {
+  font-size: var(--tv2oj-font-md);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--tv2oj-gray-100, #edede5);
+  color: var(--tv2oj-black-500, #746f69);
+  line-break: strict;
+  margin: 0;
+  max-width: 100%;
+  min-width: 320px;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: var(--tv2oj-font-body);
+  font-weight: normal;
+  font-size: var(--tv2oj-font-md);
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: 150%;
+}
+
+::-moz-selection,
+::selection {
+  background: var(--tv2oj-color-black);
+  color: var(--tv2oj-color-white);
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--tv2oj-border-color);
+  margin: -1px 0;
+  padding: 0;
+}
+
+// Remove the gap between audio, canvas, iframes,
+// images, videos and the bottom of their containers
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+// Remove default fieldset styles.
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// Allow only vertical resizing of textareas.
+textarea {
+  resize: vertical;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
+svg {
+  pointer-events: none;
+}
+
+h1 {
+    font-family: var(--tv2oj-font-heading);
+    font-weight: normal;
+    font-size: var(--tv2oj-font-3xl);
+    letter-spacing: -1%;
+    line-height: 112.5%;
+}
+
+h2 {
+    font-family: var(--tv2oj-font-heading);
+    font-weight: normal;
+    font-size: var(--tv2oj-font-2xl);
+    letter-spacing: -1%;
+    line-height: 112.5%;
+}
+
+h3 {
+    font-family: var(--tv2oj-font-heading);
+    font-weight: 500;
+    font-size: var(--tv2oj-font-xl);
+    letter-spacing: -1%;
+    line-height: 125%;
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Podcast embed</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/safari-pinned-tab.svg"
+      color="#00aa5a"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="css/tv2oj.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          theme: {
+            colors: {
+              transparent: "transparent",
+              current: "currentColor",
+              white: "var(--tv2oj-white)",
+              gray: {
+                50: "var(--tv2oj-gray-50)",
+                100: "var(--tv2oj-gray-100)",
+                200: "var(--tv2oj-gray-200)",
+                300: "var(--tv2oj-gray-300)",
+                400: "var(--tv2oj-gray-400)",
+                500: "var(--tv2oj-gray-500)",
+              },
+              green: {
+                400: "var(--tv2oj-green-400)", //secondary
+                500: "var(--tv2oj-green-500)",
+                600: "var(--tv2oj-green-600)",
+                900: "var(--tv2oj-green-900)",
+              },
+              pink: {
+                500: "var(--tv2oj-pink-500)",
+                600: "var(--tv2oj-pink-600)", //secondary
+              },
+              yellow: {
+                400: "var(--tv2oj-yellow-40 md:w-440)",
+                500: "var(--tv2oj-yellow-500)",
+              },
+              red: {
+                500: "var(--tv2oj-red-500)",
+                900: "var(--tv2oj-red-900)", //secondary
+              },
+              black: {
+                500: "var(--tv2oj-black-500)",
+                700: "var(--tv2oj-black-700)",
+                900: "var(--tv2oj-black-900)",
+              },
+              blue: {
+                300: "var(--tv2oj-blue-300)", //secondary
+                500: "var(--tv2oj-blue-500)", //secondary
+                700: "var(--tv2oj-blue-700)", //secondary
+              },
+              orange: "var(--tv2oj-orange-400)", //secondary
+              purple: {
+                300: "var(--tv2oj-purple-300)", //secondary
+                500: "var(--tv2oj-purple-500)", //secondary
+              },
+              ui: {
+                backdrop: "rgba(0, 0, 0, .5)",
+                breaking: "var(--tv2oj-yellow-500)",
+                border: "var(--tv2oj-gray-200)",
+              },
+            },
+            fontFamily: {
+              proxima: ["proxima-nova", "sans-serif"],
+              sundry: ["sundry-regular", "sans-serif"],
+              "sundry-medium": ["sundry-medium", "sans-serif"],
+            },
+            fontSize: {
+              xs: "var(--tv2oj-font-xs)",
+              sm: "var(--tv2oj-font-sm)",
+              base: "var(--tv2oj-font-md)",
+              lg: "var(--tv2oj-font-lg)",
+              xl: "var(--tv2oj-font-xl)",
+              "2xl": "var(--tv2oj-font-2xl)",
+              "3xl": "var(--tv2oj-font-3xl)",
+              "4xl": "var(--tv2oj-font-4xl)",
+            },
+            extend: {
+              maxWidth: {
+                shell: "var(--tv2oj-max-w-shell)",
+                "article-image": "var(--tv2oj-max-w-image)",
+                "article-text": "var(--tv2oj-max-w-prose)",
+              },
+              screens: {
+                sm: "480px",
+                md: "768px",
+                lg: "1024px",
+                xl: "1440px",
+                xxl: "1920px",
+              },
+              spacing: {
+                xs: "var(--tv2oj-space-xs)",
+                sm: "var(--tv2oj-space-sm)",
+                md: "var(--tv2oj-space-md)",
+                lg: "var(--tv2oj-space-lg)",
+                xl: "var(--tv2oj-space-xl)",
+              },
+              animation: {
+                "fade-in": "fadeIn 0.25s cubic-bezier(0.39, 0.575, 0.565, 1)",
+              },
+              borderRadius: {
+                xs: "var(--tv2oj-space-xs)",
+                sm: "var(--tv2oj-space-sm)",
+                md: "var(--tv2oj-space-md)",
+                lg: "var(--tv2oj-space-lg)",
+                xl: "var(--tv2oj-space-xl)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom CSS for slide-up/slide-down animation and overlay */
+      .slide-up-down {
+        transition: all 0.3s ease-out;
+        overflow-y: hidden;
+        max-height: 0;
+        opacity: 0;
+      }
+
+      .slide-up-down.show {
+        max-height: 100vh;
+        /* maximum height when drawer is opened */
+        opacity: 1;
+      }
+
+      .overlay {
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        display: none;
+      }
+
+      .overlay.show {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mx-auto p-8">
+
+      <!-- Podcast Card -->
+      <div
+        id="podcast-card"
+        class="cursor-pointer bg-blue-500 p-4 rounded-md text-white"
+        onclick="toggleDrawer()"
+      >
+        <h2 class="text-2xl font-semibold">Podcast Title</h2>
+        <p>Description of the podcast</p>
+      </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay group" onclick="toggleDrawer()">
+      <button
+        class="absolute right-4 top-4 text-white pointer-event-none group-hover:text-green-500 transition-colors"
+      >
+        Close
+      </button>
+    </div>
+
+    <!-- Podcast Drawer -->
+    <div
+      id="drawer"
+      class="fixed bottom-0 right-0 flex flex-col w-full md:w-1/2 lg:w-1/3 slide-up-down z-20"
+    >
+      <!-- Drawer Top Header -->
+      <div
+        class="drawer__header inline-flex justify-between items-center"
+      >
+        <div class="" onclick="toggleDrawer()">
+          <span
+            class="h-12 p-4 bg-black hover:bg-green-600 text-white text-xl font-sundry text-center flex-grow"
+          >
+            Drawer Title
+          </span>
+          <span
+            class="bg-white text-black h-12 w-12 inline-flex leading-none items-center justify-center rounded-tr-xl"
+            >+</span
+          >
+        </div>
+      </div>
+
+      <!-- Drawer Content -->
+      <div id="podcast-iframe" class="drawer_content bg-white text-black-700 p-4 shadow-lg">
+        <iframe
+          src="https://widget.spreaker.com/player?episode_id=54438209&theme=light&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a"
+          width="100%"
+          height="400px"
+          frameborder="0"
+        ></iframe>
+      </div>
+    </div>
+
+    <script>
+      function toggleDrawer() {
+        const drawer = document.getElementById("drawer");
+        const overlay = document.getElementById("overlay");
+        const iframe = document.getElementById("podcast-iframe");
+        const header = drawer.querySelector("div:first-child");
+
+       /*
+        console.log("drawer: ", drawer);
+        console.log("overlay: ", overlay);
+        console.log("iframe: ", iframe);
+        console.log("header: ", header);
+        */
+
+        if (drawer.classList.contains("show")) {
+          drawer.classList.remove("show");
+          overlay.classList.remove("show");
+        } else {
+          // Calculate total drawer height
+          const headerHeight = header.offsetHeight;
+          const totalHeight = parseInt(iframe.height) + headerHeight;
+          drawer.style.height = `${totalHeight}px`;
+          drawer.classList.add("show");
+          overlay.classList.add("show");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Podcast embed</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/safari-pinned-tab.svg"
+      color="#00aa5a"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="css/tv2oj.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          theme: {
+            colors: {
+              transparent: "transparent",
+              current: "currentColor",
+              white: "var(--tv2oj-white)",
+              gray: {
+                50: "var(--tv2oj-gray-50)",
+                100: "var(--tv2oj-gray-100)",
+                200: "var(--tv2oj-gray-200)",
+                300: "var(--tv2oj-gray-300)",
+                400: "var(--tv2oj-gray-400)",
+                500: "var(--tv2oj-gray-500)",
+              },
+              green: {
+                400: "var(--tv2oj-green-400)", //secondary
+                500: "var(--tv2oj-green-500)",
+                600: "var(--tv2oj-green-600)",
+                900: "var(--tv2oj-green-900)",
+              },
+              pink: {
+                500: "var(--tv2oj-pink-500)",
+                600: "var(--tv2oj-pink-600)", //secondary
+              },
+              yellow: {
+                400: "var(--tv2oj-yellow-40 md:w-440)",
+                500: "var(--tv2oj-yellow-500)",
+              },
+              red: {
+                500: "var(--tv2oj-red-500)",
+                900: "var(--tv2oj-red-900)", //secondary
+              },
+              black: {
+                500: "var(--tv2oj-black-500)",
+                700: "var(--tv2oj-black-700)",
+                900: "var(--tv2oj-black-900)",
+              },
+              blue: {
+                300: "var(--tv2oj-blue-300)", //secondary
+                500: "var(--tv2oj-blue-500)", //secondary
+                700: "var(--tv2oj-blue-700)", //secondary
+              },
+              orange: "var(--tv2oj-orange-400)", //secondary
+              purple: {
+                300: "var(--tv2oj-purple-300)", //secondary
+                500: "var(--tv2oj-purple-500)", //secondary
+              },
+              ui: {
+                backdrop: "rgba(0, 0, 0, .5)",
+                breaking: "var(--tv2oj-yellow-500)",
+                border: "var(--tv2oj-gray-200)",
+              },
+            },
+            fontFamily: {
+              proxima: ["proxima-nova", "sans-serif"],
+              sundry: ["sundry-regular", "sans-serif"],
+              "sundry-medium": ["sundry-medium", "sans-serif"],
+            },
+            fontSize: {
+              xs: "var(--tv2oj-font-xs)",
+              sm: "var(--tv2oj-font-sm)",
+              base: "var(--tv2oj-font-md)",
+              lg: "var(--tv2oj-font-lg)",
+              xl: "var(--tv2oj-font-xl)",
+              "2xl": "var(--tv2oj-font-2xl)",
+              "3xl": "var(--tv2oj-font-3xl)",
+              "4xl": "var(--tv2oj-font-4xl)",
+            },
+            extend: {
+              maxWidth: {
+                shell: "var(--tv2oj-max-w-shell)",
+                "article-image": "var(--tv2oj-max-w-image)",
+                "article-text": "var(--tv2oj-max-w-prose)",
+              },
+              screens: {
+                sm: "480px",
+                md: "768px",
+                lg: "1024px",
+                xl: "1440px",
+                xxl: "1920px",
+              },
+              spacing: {
+                xs: "var(--tv2oj-space-xs)",
+                sm: "var(--tv2oj-space-sm)",
+                md: "var(--tv2oj-space-md)",
+                lg: "var(--tv2oj-space-lg)",
+                xl: "var(--tv2oj-space-xl)",
+              },
+              animation: {
+                "fade-in": "fadeIn 0.25s cubic-bezier(0.39, 0.575, 0.565, 1)",
+              },
+              borderRadius: {
+                xs: "var(--tv2oj-space-xs)",
+                sm: "var(--tv2oj-space-sm)",
+                md: "var(--tv2oj-space-md)",
+                lg: "var(--tv2oj-space-lg)",
+                xl: "var(--tv2oj-space-xl)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+
+  <body>
+    <!-- Item #1  -->
+    <div class="podcast-embed">
+      <pre>
+      <div class="bg-black rounded-md">
+        <div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md">
+          <span>Podcast title</span>
+          <button class="flex ml-auto gizmo:ml-0 gap-2" onclick="copyHTML(this.closest('.podcast-embed'))">
+            Copy code
+          </button>
+        </div>
+        <div class="p-4 overflow-y-auto" >
+          <code class="!whitespace-pre">
+            <!-- Narkofabrikken - Lys START-->
+<iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=light&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
+<!-- Narkofabrikken - Lys END-->
+          </code>
+        </div>
+      </div>
+    </pre>
+    </div>
+
+    <!-- Item #2  -->
+    <div class="podcast-embed">
+      <pre>
+      <div class="bg-black rounded-md">
+        <div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md">
+          <span>Podcast title</span>
+          <button class="flex ml-auto gizmo:ml-0 gap-2" onclick="copyHTML(this.closest('.podcast-embed'))">
+            Copy code
+          </button>
+        </div>
+        <div class="p-4 overflow-y-auto" >
+          <code class="!whitespace-pre">
+            <!-- Narkofabrikken - Mørkt START-->
+<iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=dark&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
+<!-- Narkofabrikken - Mørkt END-->
+          </code>
+        </div>
+      </div>
+    </pre>
+    </div>
+
+    <script>
+      async function copyHTML(el) {
+        const codeEl = el.querySelector("code");
+        const button = el.querySelector("button");
+        const originalButtonText = button.innerText;
+      
+        // Get the HTML content as a string and decode HTML entities
+        let htmlContent = codeEl ? codeEl.innerHTML : "";
+        const txt = document.createElement('textarea');
+        txt.innerHTML = htmlContent;
+        htmlContent = txt.value;
+      
+        try {
+          // Use Clipboard API to write the HTML string to clipboard
+          await navigator.clipboard.writeText(htmlContent);
+      
+          // Update the button text to "Copied"
+          button.innerText = "Copied!";
+      
+          // Reset the button text back to the original after 5 seconds
+          setTimeout(() => {
+            button.innerText = originalButtonText;
+          }, 5000);
+        } catch (err) {
+          console.error("Failed to copy text: ", err);
+        }
+      }      
+    </script>
+  </body>
+
+</html>
