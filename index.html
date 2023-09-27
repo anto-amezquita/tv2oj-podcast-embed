@@ -147,67 +147,69 @@
   </head>
 
   <body>
-    <!-- Item #1  -->
-    <div class="podcast-embed">
-      <pre>
-      <div class="bg-black rounded-md">
-        <div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md">
-          <span>Podcast title</span>
-          <button class="flex ml-auto gizmo:ml-0 gap-2" onclick="copyHTML(this.closest('.podcast-embed'))">
-            Copy code
-          </button>
-        </div>
-        <div class="p-4 overflow-y-auto" >
-          <code class="!whitespace-pre">
-            <!-- Narkofabrikken - Lys START-->
-<iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=light&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
-<!-- Narkofabrikken - Lys END-->
-          </code>
-        </div>
-      </div>
-    </pre>
-    </div>
 
-    <!-- Item #2  -->
-    <div class="podcast-embed">
-      <pre>
-      <div class="bg-black rounded-md">
-        <div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md">
-          <span>Podcast title</span>
-          <button class="flex ml-auto gizmo:ml-0 gap-2" onclick="copyHTML(this.closest('.podcast-embed'))">
-            Copy code
-          </button>
-        </div>
-        <div class="p-4 overflow-y-auto" >
-          <code class="!whitespace-pre">
-            <!-- Narkofabrikken - Mørkt START-->
-<iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=dark&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
-<!-- Narkofabrikken - Mørkt END-->
-          </code>
-        </div>
+    <section id="Narkofabrikken" class="min-h-screen flex flex-col justify-center gap-6 items-center px-4 py-20 lg:py-24 container mx-auto">
+      <h2 class="text-4xl leading-[112.5%] tracking-tight mt-0 mx-0 mb-6">
+        Narkofabrikken
+      </h2>
+      <div class="flex flex-wrap justify-center gap-5">
+
+        <!-- Light -->
+    <pre class="podcast-embed bg-white text-black rounded-md flex gap-0 flex-col overflow-hidden max-w-sm mx-auto whitespace-normal">
+      <div class="flex h-12 items-center relative text-gray-200 bg-gray-800 px-4 justify-between">
+        <span class="text-sm font-sundry">Lys</span>
+        <button class="flex ml-auto gap-2 text-sm" onclick="copyHTML(this.closest('.podcast-embed'))">
+          Copy code
+        </button>
+      </div>
+      <div class="p-4 overflow-y-auto">
+        <code class="!whitespace-pre flex w-full">
+          <!-- Copy iframe below -->
+          <iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=light&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
+        </code>
       </div>
     </pre>
-    </div>
+
+    <!-- Dark -->
+    <pre class="podcast-embed bg-white text-black rounded-md flex gap-0 flex-col overflow-hidden max-w-sm mx-auto whitespace-normal">
+      <div class="flex h-12 items-center relative text-gray-200 bg-gray-800 px-4 justify-between">
+        <span class="text-sm font-sundry">Mørkt</span>
+        <button class="flex ml-auto gap-2 text-sm" onclick="copyHTML(this.closest('.podcast-embed'))">
+          Copy code
+        </button>
+      </div>
+      <div class="p-4 overflow-y-auto">
+        <code class="!whitespace-pre flex w-full">
+          <!-- Copy iframe below -->
+          <iframe src="https://widget.spreaker.com/player?episode_id=54438209&theme=dark&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
+        </code>
+      </div>
+    </pre>
+
+      </div>
+    </section>
+
+    
 
     <script>
       async function copyHTML(el) {
         const codeEl = el.querySelector("code");
         const button = el.querySelector("button");
         const originalButtonText = button.innerText;
-      
+
         // Get the HTML content as a string and decode HTML entities
         let htmlContent = codeEl ? codeEl.innerHTML : "";
-        const txt = document.createElement('textarea');
+        const txt = document.createElement("textarea");
         txt.innerHTML = htmlContent;
         htmlContent = txt.value;
-      
+
         try {
           // Use Clipboard API to write the HTML string to clipboard
           await navigator.clipboard.writeText(htmlContent);
-      
+
           // Update the button text to "Copied"
           button.innerText = "Copied!";
-      
+
           // Reset the button text back to the original after 5 seconds
           setTimeout(() => {
             button.innerText = originalButtonText;
@@ -215,8 +217,7 @@
         } catch (err) {
           console.error("Failed to copy text: ", err);
         }
-      }      
+      }
     </script>
   </body>
-
 </html>
