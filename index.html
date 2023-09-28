@@ -146,7 +146,47 @@
     </script>
   </head>
 
-  <body>
+  <body class="flex flex-col items-center min-h-screen">
+    <div id="top"></div>
+
+    <!-- Fixed Top Navigation -->
+    <nav class="p-4 fixed top-0 w-full z-10">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-base md:text-xl font-sundry text-green-900">
+          <a href="#top" class="block leading-tight mr-4">TV2ØJ Podcast Embed</a>
+        </h1>
+        <div class="text-sm md:text-base">
+          <a href="#Narkofabrikken" class="nav-link hover:text-green-600"
+            >Narkofabrikken</a
+          >
+          <span class="mx-2">/</span>
+          <a href="#Forfulgt" class="nav-link hover:text-green-600">Forfulgt</a>
+          <span class="mx-2">/</span>
+          <a
+            href="#Forgiftet-paa-plejehjem"
+            class="nav-link hover:text-green-600"
+            >Forgiftet på plejehjem</a
+          >
+          <span class="mx-2">/</span>
+          <a
+            href="#Svindel-under-overfladen"
+            class="nav-link hover:text-green-600"
+            >Svindel under overfladen</a
+          >
+          <span class="mx-2">/</span>
+          <a href="#Holdet-der-vandt" class="nav-link hover:text-green-600"
+            >Holdet der vandt</a
+          >
+          <span class="mx-2">/</span>
+          <a href="#I-forandring" class="nav-link hover:text-green-600"
+            >I forandring</a
+          >
+          <span class="mx-2">/</span>
+          <a href="#Fodspor" class="nav-link hover:text-green-600">Fodspor</a>
+        </div>
+      </div>
+    </nav>
+
     <section
       id="Narkofabrikken"
       class="min-h-screen flex flex-col justify-center gap-6 items-center px-4 py-20 lg:py-24 container mx-auto"
@@ -461,33 +501,6 @@
       </div>
     </section>
 
-    <script>
-      async function copyHTML(el) {
-        const codeEl = el.querySelector("code");
-        const button = el.querySelector("button");
-        const originalButtonText = button.innerText;
-
-        // Get the HTML content as a string and decode HTML entities
-        let htmlContent = codeEl ? codeEl.innerHTML : "";
-        const txt = document.createElement("textarea");
-        txt.innerHTML = htmlContent;
-        htmlContent = txt.value;
-
-        try {
-          // Use Clipboard API to write the HTML string to clipboard
-          await navigator.clipboard.writeText(htmlContent);
-
-          // Update the button text to "Copied"
-          button.innerText = "Kopieret!";
-
-          // Reset the button text back to the original after 5 seconds
-          setTimeout(() => {
-            button.innerText = originalButtonText;
-          }, 5000);
-        } catch (err) {
-          console.error("Failed to copy text: ", err);
-        }
-      }
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>
