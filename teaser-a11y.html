@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Podcast embed</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="assets/favicon/safari-pinned-tab.svg"
+      color="#00aa5a"
+    />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Use a valid Tailwind CDN URL -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Removed tailwind.config JS code -->
+
+    <style>
+      /* Custom CSS for slide-up/slide-down animation and overlay */
+      .slide-up-down {
+        transition: all 0.3s ease-out;
+        overflow-y: hidden;
+        max-height: 48px;
+      }
+
+      .slide-up-down.show {
+        max-height: 100vh;
+        opacity: 1;
+      }
+
+      .slide-up-down.show .drawer__header-toggle-text {
+        display: inline-flex;
+      }
+
+      .drawer__overlay {
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        display: none;
+      }
+
+      .drawer__overlay.show {
+        display: block;
+      }
+
+      #podcast-card {
+        transition: background-color 0.3s ease;
+        &.active {
+          border: 2px solid orange;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--
+    Accessibility
+Semantic Elements: Use more semantic HTML elements to help screen readers understand the content's structure. For example, use <header> for headers and <nav> for navigation elements.
+ARIA Labels: ARIA (Accessible Rich Internet Applications) labels can be used to improve accessibility. For example, the button that toggles the drawer can be more descriptive for screen readers.
+Contrast Ratio: Ensure that text has a high contrast ratio for better readability. For example, the podcast card's text color on a blue background may need adjustment.
+Focus Management: When the drawer is opened or closed, the focus should be managed correctly. For example, when the drawer opens, the focus could be moved to the first interactive element inside it.
+Keyboard Navigation: Make sure all interactive elements can be navigated using the keyboard.
+iFrame title: The iframe should have a title for accessibility.
+Code Optimization
+CSS: You can use Tailwind's utilities for things like padding, margins, and text styling instead of writing custom CSS, for consistency.
+JavaScript: The toggleDrawer function could be optimized a bit.
+-->
+    
+    <!-- ...existing head content... -->
+
+    <body>
+      <div class="container mx-auto p-8">
+        <!-- Podcast Card -->
+        <div id="podcast-card" tabindex="0" class="cursor-pointer bg-blue-500 p-4 rounded-md text-white" onclick="toggleDrawer()" role="button" aria-pressed="false">
+          <h2 class="text-2xl font-semibold">Podcast:  Title comes here</h2>
+          <p>Description of the podcast</p>
+        </div>
+      </div>
+    
+      <!-- Overlay -->
+      <div class="drawer__overlay" onclick="toggleDrawer()" tabindex="0" role="button" aria-pressed="false">
+      </div>
+    
+      <!-- Podcast Drawer -->
+      <div id="drawer" class="fixed bottom-0 right-0 flex flex-col w-full lg:w-1/2 xl:w-1/3 2xl:w-1/4 slide-up-down z-20" 
+      role="dialog" aria-labelledby="drawer-header">
+        <!-- Drawer Top Header -->
+        <div class="drawer__header inline-flex justify-end items-center lg:justify-start" id="drawer-header">
+          <button type="button" class="drawer__header-toggle inline-flex items-center justify-center leading-none group" onclick="toggleDrawer()" aria-label="Toggle Podcast Drawer">
+            <span class="drawer__header-toggle-text h-12 p-4 inline-flex items-center justify-center bg-black text-white text-xl font-sundry text-center flex-grow hidden md:inline-flex transition-colors rounded-tl-xl">Podcast: Title comes here</span>
+            <span class="drawer__header-toggle-icon bg-pink-500 text-white text-lg h-12 w-12 inline-flex items-center justify-center transition-colors">+</span>
+          </button>
+        </div>
+    
+        <!-- Drawer Content -->
+        <div class="drawer__content bg-white text-black p-4 shadow-lg">
+          <!-- iframe content -->
+          <iframe title="Podcast Episode" src="https://widget.spreaker.com/player?episode_id=54438209&theme=light&playlist=show&playlist-continuous=false&chapters-image=true&episode_image_position=right&hide-logo=true&hide-likes=true&hide-comments=true&hide-sharing=false&hide-download=true&color=00aa5a" width="100%" height="400px" frameborder="0"></iframe>
+        </div>
+      </div>
+    
+      <script>
+        function toggleDrawer() {
+          const drawer = document.getElementById("drawer");
+          const overlay = document.querySelector(".drawer__overlay");
+          const podcastCard = document.getElementById("podcast-card");
+          // ... existing code ...
+          // Manage focus
+          if (drawer.classList.contains("show")) {
+            podcastCard.setAttribute("aria-pressed", "true");
+          } else {
+            podcastCard.setAttribute("aria-pressed", "false");
+          }
+        }
+      </script>
+    </body>
+    </html>
